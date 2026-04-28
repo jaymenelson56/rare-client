@@ -28,5 +28,8 @@ export const registerUser = (newUser) => {
 export const getMe = () => {
   return fetch(`${API}/me`, {
     headers: authHeader()
-  }).then(res => res.json())
+  }).then(res => {
+    if (!res.ok) return Promise.reject(new Error('Unauthorized'))
+    return res.json()
+  })
 }
