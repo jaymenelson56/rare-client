@@ -33,7 +33,7 @@ export const PostSearch = () => {
             {posts.map(post => (
               <tr key={post.id}>
                 <td><Link to={`/posts/${post.id}`}>{post.title}</Link></td>
-                <td>{post.user.username}</td>
+                <td><Link to={`/profiles/${post.user.id}`}>{post.user.username}</Link></td>
                 <td>{post.publication_date}</td>
               </tr>
             ))}

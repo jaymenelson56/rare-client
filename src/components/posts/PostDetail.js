@@ -41,7 +41,7 @@ export const PostDetail = ({ isAdmin }) => {
       <div className="container">
         <h1 className="title">{post.title}</h1>
         <p className="subtitle">
-          By {post.user.username}
+          By <Link to={`/profiles/${post.user.id}`}>{post.user.username}</Link>
           {post.category && <> &middot; {post.category.label}</>}
           {post.publication_date && (
             <> &middot; {formatPublicationDate(post.publication_date)}</>
@@ -139,7 +139,7 @@ export const PostDetail = ({ isAdmin }) => {
               <div key={comment.id} className="box">
                 <p className="has-text-weight-bold">{comment.subject}</p>
                 <p>{comment.content}</p>
-                <p className="has-text-grey is-size-7">by {comment.author.username}</p>
+                <p className="has-text-grey is-size-7">by <Link to={`/profiles/${comment.author.id}`}>{comment.author.username}</Link></p>
                 {(comment.author.id === currentUserId || isAdmin) && (
                   <div className="buttons mt-2">
                     <button

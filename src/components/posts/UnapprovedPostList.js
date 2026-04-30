@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"
-import { useNavigate } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 import { getUnapprovedPosts, approvePost } from "../../managers/PostManager"
 
 export const UnapprovedPostList = () => {
@@ -45,7 +45,7 @@ export const UnapprovedPostList = () => {
                       {post.title}
                     </span>
                   </td>
-                  <td>{post.user.username}</td>
+                  <td><Link to={`/profiles/${post.user.id}`}>{post.user.username}</Link></td>
                   <td>{post.category?.label ?? "—"}</td>
                   <td>{post.publication_date}</td>
                   <td>
