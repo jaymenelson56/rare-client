@@ -65,7 +65,7 @@ export const PostList = () => {
               <td>
                 <Link to={`/posts/${post.id}`}>{post.title}</Link>
               </td>
-              <td>{post.user.username}</td>
+              <td><Link to ={`/profiles/${post.user.id}`}>{post.user.username}</Link></td>
               <td>{post.category ? post.category.label : "—"}</td>
               <td>{post.publication_date}</td>
             </tr>
