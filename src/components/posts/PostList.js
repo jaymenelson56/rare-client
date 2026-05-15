@@ -64,6 +64,9 @@ export const PostList = () => {
             <tr key={post.id}>
               <td>
                 <Link to={`/posts/${post.id}`}>{post.title}</Link>
+                {!post.approved && (
+                  <span className="tag is-warning ml-2">Pending Approval</span>
+                )}
               </td>
               <td><Link to ={`/profiles/${post.user.id}`}>{post.user.username}</Link></td>
               <td>{post.category ? post.category.label : "—"}</td>
