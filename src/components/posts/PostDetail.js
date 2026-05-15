@@ -39,7 +39,18 @@ export const PostDetail = ({ isAdmin }) => {
   return (
     <section className="section">
       <div className="container">
-        <h1 className="title">{post.title}</h1>
+        {isAuthor && !post.approved && (
+          <div className="notification is-warning">
+            <strong>Your post is pending admin approval.</strong> It will not appear in the public Posts list until an admin approves it.
+            {' '}You can track all your posts, including unapproved ones, in <Link to="/myposts">My Posts</Link>.
+          </div>
+        )}
+        <div className="is-flex is-align-items-center mb-2" style={{ gap: '0.75rem' }}>
+          <h1 className="title mb-0">{post.title}</h1>
+          {!post.approved && (isAuthor || isAdmin) && (
+            <span className="tag is-warning is-medium">Pending Approval</span>
+          )}
+        </div>
         <p className="subtitle">
           By <Link to={`/profiles/${post.user.id}`}>{post.user.username}</Link>
           {post.category && <> &middot; {post.category.label}</>}

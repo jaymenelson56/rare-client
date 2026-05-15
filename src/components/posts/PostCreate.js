@@ -26,9 +26,9 @@ export const PostCreate = () => {
       if (file) {
         const formData = new FormData()
         formData.append("image", file)
-        uploadPostImage(post.id, formData).then(() => navigate(`/posts/${post.id}`))
+        uploadPostImage(post.id, formData).then(() => navigate('/posts'))
       } else {
-        navigate(`/posts/${post.id}`)
+        navigate('/posts')
       }
     })
   }
